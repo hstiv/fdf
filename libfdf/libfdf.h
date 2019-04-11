@@ -18,17 +18,12 @@
 # include "libft.h"
 # include "unistd.h"
 
-typedef struct		s_cor
+typedef struct		s_mlx;
 {
 	int				x;
 	int				y;
 	int				z;
-}					t_cor;
-
-typedef struct		s_mlx;
-{
 	void			*mlx_color;
-	t_cor			*mlx_cor;
 	struct s_mlx	*next;
 }					t_mlx;
 
@@ -39,6 +34,10 @@ typedef struct		s_fdf;
 	void			*mlx_ptr;
 }					t_fdf;
 
-char				*ft_valid_map(const int fd);
+char			*ft_valid_map(const int fd);
+void                    ft_rec(t_fdf *mlx_data, char *map);
+t_mlx			ft_new_dot();
+t_fdf			ft_new_fdf();
+
 
 #endif
