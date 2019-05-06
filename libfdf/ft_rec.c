@@ -44,7 +44,6 @@ static void		ft_width(t_mlx *dot, char *s)
 	else
 		dot->color = COLOR;
 	free(str);
-	
 }
 
 static void		ft_recorder(char **s, t_mlx **dot, int y)
@@ -81,7 +80,8 @@ void			ft_rec(t_fdf *mlx_data, char **map)
 	y = 0;
 	while (map[y] != NULL)
 	{
-		(!dot[y]) ? (dot[y] = (t_mlx **)ft_memalloc(sizeof(t_mlx *) * (p + 1))) : 0;
+		if (dot[y])
+			dot[y] = (t_mlx **)ft_memalloc(sizeof(t_mlx *) * (p + 1);
 		ft_recorder(ft_strsplit(map[y], 32), dot[y], y);
 		y++;
 	}
