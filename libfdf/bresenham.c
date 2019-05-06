@@ -24,7 +24,6 @@ void			ft_drawxstr(t_mlx *d0, t_mlx *d1, t_fdf *mlx)
 
 	x = d0->x;
 	y = d0->y;
-	dely = 0;
 	(d1->x - d0->x > 0) ? (delx = d1->x - d0->x) : (delx = d0->x - d1->x);
 	(d1->y - d0->y > 0) ? (dely = d1->y - d0->y) : (dely = d0->y - d1->y);
 	err = 0;

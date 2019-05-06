@@ -51,13 +51,12 @@ static void		ft_recorder(char **s, t_mlx **dot, int y)
 	int			x;
 
 	x = 0;
+	y = 0;
 	while (s[x] != NULL)
 	{
 		dot[x] = ft_new_dot();
-		dot[x]->x += (x > 0 || x < 0) ? (x * LINE + BEG) : (BEG);
+		dot[x]->x += x;
 		ft_width(dot[x], s[x]);
-		dot[x]->y -= ((LINE >= 10) ? dot[x]->z * 2 : dot[x]->z);
-		dot[x]->y += (y > 0 || y < 0) ? (y * LINE + BEG) : (BEG);
 		x++;
 	}
 	ft_arraydel((void **)s);
@@ -80,8 +79,8 @@ void			ft_rec(t_fdf *mlx_data, char **map)
 	y = 0;
 	while (map[y] != NULL)
 	{
-		if (dot[y])
-			dot[y] = (t_mlx **)ft_memalloc(sizeof(t_mlx *) * (p + 1);
+		if (!dot[y])
+			dot[y] = (t_mlx **)ft_memalloc(sizeof(t_mlx *) * (p + 1));
 		ft_recorder(ft_strsplit(map[y], 32), dot[y], y);
 		y++;
 	}

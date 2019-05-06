@@ -12,15 +12,18 @@
 
 #include "libfdf.h"
 
-static void		iso(int *x, int *y, int z)
+static void		iso(t_mlx *clone, int x, int y, t_fdf *mlx)
 {
-	int previous_x;
-    int previous_y;
+	int			prev_x;
+    int 		prev_y;
+	int			prev_z;
 
-    previous_x = *x;
-    previous_y = *y;
-    *x = (previous_x - previous_y) * cos(30/57.2958);
-	*y = (previous_y + previous_x) * sin(30/57.2958) - z;
+	prev_x = x + mlx->x_add + ((x != 0) ? (x * LINE + BEG) : (BEG));
+    prev_y = y + mlx->y_add + ((y != 0) ? (y * LINE + BEG) : (BEG));
+	prev_z = clone->z * LINE;
+    clone->x = (prev_x - prev_y) * cos(30 / 57.2958);
+	clone->y = (prev_y + prev_x) * sin(30 / 57.2958) - clone->z;
+//	clone->y -= ((LINE >= 10) ? clone->z * 2 : clone->z);
 }
 
 static void		cloner(t_mlx *clone, t_fdf *mlx, int y, int x)
@@ -29,11 +32,13 @@ static void		cloner(t_mlx *clone, t_fdf *mlx, int y, int x)
 
 	dot = mlx->dot[y][x];
 	clone->color = dot->color;
-	clone->x = dot->x + mlx->x_add;
-	clone->y = dot->y + mlx->y_add;
+	clone->x = mlx->x_add + ((x != 0) ? (x * LINE + BEG) : (BEG));
+	clone->y = mlx->y_add + ((y != 0) ? (y * LINE + BEG) : (BEG));
+	if (mlx->iso == 0)
+		clone->y -= ((LINE >= 10) ? dot->z * 2 : dot->z);
 	clone->z = dot->z;
 	if (mlx->iso == 1)
-		iso (&clone->x, &clone->y, clone->z);
+		iso (clone, x, y, mlx);
 }
 
 static void		ft_print_hor(t_mlx **dot, t_fdf *mlx, int y)
