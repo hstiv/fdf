@@ -26,10 +26,12 @@ t_fdf		*ft_new_fdf()
 		data->mlx_wind = NULL;
 		data->mlx_ptr = NULL;
 		data->mlx_img = NULL;
-		data->x_add = 0;
-		data->y_add = 0;
+		data->x_add = 70;
+		data->y_add = 70;
 		data->iso = 0;
 		data->par = 1;
+		data->tall = 50;
+		data->l = 10;
 	}
 	return (data);
 }

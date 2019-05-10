@@ -14,7 +14,13 @@
 
 static int		ft_close(void *param)
 {
-	(void)param;
+	t_fdf		*tmp;
+
+	tmp = (t_fdf *)param;
+	// if (tmp->dot)
+	// 	ft_free((void ***)tmp->dot);
+	// if (tmp)
+	// 	free(tmp);
 	exit(0);
 	return (0);
 }
@@ -22,41 +28,46 @@ static int		ft_close(void *param)
 int				key_press(int keycode, t_fdf *param)
 {
 	if (keycode == 53)
-		exit(0);
-	else if (keycode == 126)
+		ft_close((void *)param);
+	else if (keycode == 13)
 		param->y_add -= CON;
-	else if (keycode == 125)
+	else if (keycode == 1)
 		param->y_add += CON;
-	else if (keycode == 124)
+	else if (keycode == 2)
 		param->x_add += CON;
-	else if (keycode == 123)
+	else if (keycode == 0)
 		param->x_add -= CON;
 	else if (keycode == 34)
 	{
 		param->iso = 1;
-		param->x_add = WIDTH / 2;
-		param->y_add = HEIGHT / 2;
 		param->par = 0;
 	}
 	else if (keycode == 35)
 	{
 		param->iso = 0;
-		param->x_add = WIDTH / LINE;
-		param->y_add = HEIGHT / LINE;
 		param->par = 1;
 	}
+	else if (keycode == 124)
+		param->l += 2;
+	else if (keycode == 123)
+		param->l -= 2;
+	else if (keycode == 126)
+		param->tall += 5;
+	else if (keycode == 125)
+		param->tall -= 5;
 	mlx_clear_window(param->mlx_ptr, param->mlx_wind);
 	ft_mappaint(param);
 	return (0);
 }
 
-/*int				key_release(int keycode, t_fdf *param)
+int				mouse(int keycode, t_fdf *mlx)
 {
-	(void)param;
-	if (keycode == 53)
-		keycode = 0;
+	if (keycode == 4)
+		mlx->tall += 10;
+	else if (keycode == 5)
+		mlx->tall -= 10;
 	return (0);
-}*/
+}
 
 void			ft_run_window(t_fdf *mlx_data)
 {
@@ -65,5 +76,6 @@ void			ft_run_window(t_fdf *mlx_data)
 	ft_mappaint(mlx_data);
 	mlx_hook(mlx_data->mlx_wind, 17, (1L << 17), ft_close, mlx_data);
 	mlx_hook(mlx_data->mlx_wind, 2, 0, key_press, mlx_data);
+	mlx_hook(mlx_data->mlx_wind, 4, 0, mouse, mlx_data);
 	mlx_loop(mlx_data->mlx_ptr);
 }

@@ -17,9 +17,8 @@
 # define HEIGHT 1395
 # define WIDTH 2560
 # define LINE 20
-# define BEG 70
 # define COLOR 167772
-# define CON 10
+# define CON 5
 # define FDF "fdf"
 
 # include <math.h>
@@ -47,12 +46,14 @@ typedef struct		s_fdf
 	int				y_add;
 	int				iso;
 	int				par;
+	int				beg;
+	int				tall;
+	int				l;
 }					t_fdf;
 
 void			ft_free(void ***array);
 void			ft_mappaint(t_fdf *mlx_data);
-void			ft_drawxstr(t_mlx *d0, t_mlx *d1, t_fdf *mlx);
-void			ft_drawystr(t_mlx *d0, t_mlx *d1, t_fdf *mlx);
+void			ft_bresenham(t_mlx *d0, t_mlx *d1, t_fdf *mlx);
 char			**ft_valid_map(const int fd);
 void			ft_rec(t_fdf *mlx_data, char **map);
 void			ft_run_window(t_fdf* mlx_data);

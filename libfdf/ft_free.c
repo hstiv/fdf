@@ -24,10 +24,10 @@ void		ft_free(void ***array)
 		i++;
 	while (array[i][j + 1] != NULL)
 		j++;
-	while (array[i] != NULL)
+	while (array[i])
 	{
 		l = j;
-		while (array[i][l] != NULL)
+		while (array[i][l])
 		{
 			free(array[i][l]);
 			l--;

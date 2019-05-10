@@ -22,7 +22,9 @@ int			fdf(const int fd)
 	mlx_data = ft_new_fdf();
 	ft_rec(mlx_data, map);
 	ft_run_window(mlx_data);
-	ft_free((void ***)mlx_data->dot);
-	free(mlx_data);
+	if (mlx_data->dot)
+		ft_free((void ***)mlx_data->dot);
+	if (mlx_data)
+		free(mlx_data);
 	return (1);
 }

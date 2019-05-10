@@ -16,14 +16,11 @@ static void		iso(t_mlx *clone, int x, int y, t_fdf *mlx)
 {
 	int			prev_x;
     int 		prev_y;
-	int			prev_z;
 
-	prev_x = x + mlx->x_add + ((x != 0) ? (x * LINE + BEG) : (BEG));
-    prev_y = y + mlx->y_add + ((y != 0) ? (y * LINE + BEG) : (BEG));
-	prev_z = clone->z * LINE;
-    clone->x = (prev_x - prev_y) * cos(30 / 57.2958);
-	clone->y = (prev_y + prev_x) * sin(30 / 57.2958) - clone->z;
-//	clone->y -= ((LINE >= 10) ? clone->z * 2 : clone->z);
+	prev_x = x + ((x != 0) ? (x * mlx->l) : 0);
+    prev_y = y + ((y != 0) ? (y * mlx->l) : 0);
+    clone->x = (prev_x - prev_y) * cos(30 / 57.2958) + mlx->x_add;
+	clone->y = (prev_y + prev_x) * sin(30 / 57.2958) + (mlx->y_add - clone->z);
 }
 
 static void		cloner(t_mlx *clone, t_fdf *mlx, int y, int x)
@@ -32,11 +29,13 @@ static void		cloner(t_mlx *clone, t_fdf *mlx, int y, int x)
 
 	dot = mlx->dot[y][x];
 	clone->color = dot->color;
-	clone->x = mlx->x_add + ((x != 0) ? (x * LINE + BEG) : (BEG));
-	clone->y = mlx->y_add + ((y != 0) ? (y * LINE + BEG) : (BEG));
 	if (mlx->iso == 0)
-		clone->y -= ((LINE >= 10) ? dot->z * 2 : dot->z);
-	clone->z = dot->z;
+	{
+		clone->x = x + ((x != 0) ? (x * mlx->l + mlx->x_add) : (mlx->x_add));
+		clone->y = y + ((y != 0) ? (y * mlx->l + mlx->y_add) : (mlx->y_add));
+		clone->y -= (mlx->tall) ? dot->z + mlx->tall : dot->z;
+	}
+	clone->z = dot->z + mlx->tall;
 	if (mlx->iso == 1)
 		iso (clone, x, y, mlx);
 }
@@ -54,7 +53,7 @@ static void		ft_print_hor(t_mlx **dot, t_fdf *mlx, int y)
 	{
 		cloner(clone1, mlx, y, x);
 		cloner(clone2, mlx, y, x + 1);
-		ft_drawxstr(clone1, clone2, mlx);
+		ft_bresenham(clone1, clone2, mlx);
 		x++;
 	}
 	free(clone1);
@@ -79,7 +78,7 @@ static void		ft_print_ver(t_mlx ***dot, t_fdf *mlx)
 		{
 			cloner(clone1, mlx, y, x);
 			cloner(clone2, mlx, y + 1, x);
-			ft_drawystr(clone1, clone2, mlx);
+			ft_bresenham(clone1, clone2, mlx);
 			y++;
 		}
 		x++;
