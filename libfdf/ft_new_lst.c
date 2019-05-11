@@ -30,7 +30,7 @@ t_fdf		*ft_new_fdf()
 		data->y_add = 70;
 		data->iso = 0;
 		data->par = 1;
-		data->tall = 50;
+		data->tall = 1;
 		data->l = 10;
 	}
 	return (data);

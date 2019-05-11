@@ -29,31 +29,31 @@ int				key_press(int keycode, t_fdf *param)
 {
 	if (keycode == 53)
 		ft_close((void *)param);
-	else if (keycode == 13)
+	if (keycode == 13)
 		param->y_add -= CON;
-	else if (keycode == 1)
+	if (keycode == 1)
 		param->y_add += CON;
-	else if (keycode == 2)
+	if (keycode == 2)
 		param->x_add += CON;
-	else if (keycode == 0)
+	if (keycode == 0)
 		param->x_add -= CON;
-	else if (keycode == 34)
+	if (keycode == 34)
 	{
 		param->iso = 1;
 		param->par = 0;
 	}
-	else if (keycode == 35)
+	if (keycode == 35)
 	{
 		param->iso = 0;
 		param->par = 1;
 	}
-	else if (keycode == 124)
+	if (keycode == 124)
 		param->l += 2;
-	else if (keycode == 123)
+	if (keycode == 123)
 		param->l -= 2;
-	else if (keycode == 126)
+	if (keycode == 126)
 		param->tall += 5;
-	else if (keycode == 125)
+	if (keycode == 125)
 		param->tall -= 5;
 	mlx_clear_window(param->mlx_ptr, param->mlx_wind);
 	ft_mappaint(param);

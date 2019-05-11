@@ -17,10 +17,10 @@ static void		iso(t_mlx *clone, int x, int y, t_fdf *mlx)
 	int			prev_x;
     int 		prev_y;
 
-	prev_x = x + ((x != 0) ? (x * mlx->l) : 0);
-    prev_y = y + ((y != 0) ? (y * mlx->l) : 0);
+	prev_x = x * mlx->l;
+    prev_y = y * mlx->l;
     clone->x = (prev_x - prev_y) * cos(30 / 57.2958) + mlx->x_add;
-	clone->y = (prev_y + prev_x - clone->z) * sin(30 / 57.2958) + mlx->y_add;
+	clone->y = (prev_y + prev_x) * sin(30 / 57.2958) + (mlx->y_add - clone->z);
 }
 
 static void		cloner(t_mlx *clone, t_fdf *mlx, int y, int x)
@@ -29,13 +29,14 @@ static void		cloner(t_mlx *clone, t_fdf *mlx, int y, int x)
 
 	dot = mlx->dot[y][x];
 	clone->color = dot->color;
+	clone->z = (dot->z) ? (dot->z + mlx->tall) : 0;
 	if (mlx->iso == 0)
 	{
-		clone->x = x + ((x != 0) ? (x * mlx->l + mlx->x_add) : (mlx->x_add));
-		clone->y = y + ((y != 0) ? (y * mlx->l + mlx->y_add) : (mlx->y_add));
-		clone->y -= (dot->z) ? dot->z + mlx->tall : 0;
+		clone->x = x * mlx->l + mlx->x_add;
+		clone->y = y * mlx->l + (mlx->y_add - clone->z);
+//		clone->y -= clone->z;
 	}
-	clone->z = (dot->z) ? dot->z + mlx->tall : 0;
+	clone->z = (dot->z > 0) ? dot->z + mlx->tall : 0;
 	if (mlx->iso == 1)
 		iso (clone, x, y, mlx);
 }
