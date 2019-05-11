@@ -27,7 +27,7 @@ static void		ft_width(t_mlx *dot, char *s)
 		l++;
 		i++;
 	}
-	dot->z += ft_atoi(str);
+	dot->z = ft_atoi(str);
 	if (s[i] == ',')
 	{
 		i += 3;
@@ -55,7 +55,6 @@ static void		ft_recorder(char **s, t_mlx **dot, int y)
 	while (s[x] != NULL)
 	{
 		dot[x] = ft_new_dot();
-		dot[x]->x += x;
 		ft_width(dot[x], s[x]);
 		x++;
 	}
