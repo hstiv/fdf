@@ -17,7 +17,7 @@
 # define HEIGHT 1395
 # define WIDTH 2560
 # define LINE 20
-# define COLOR 167772
+# define COLOR 128 //167772
 # define CON 5
 # define FDF "fdf"
 

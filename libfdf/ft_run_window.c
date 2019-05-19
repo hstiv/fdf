@@ -17,10 +17,6 @@ static int		ft_close(void *param)
 	t_fdf		*tmp;
 
 	tmp = (t_fdf *)param;
-	// if (tmp->dot)
-	// 	ft_free((void ***)tmp->dot);
-	// if (tmp)
-	// 	free(tmp);
 	exit(0);
 	return (0);
 }
@@ -52,9 +48,9 @@ int				key_press(int keycode, t_fdf *param)
 	if (keycode == 123)
 		param->l -= 2;
 	if (keycode == 126)
-		param->tall += 5;
+		param->tall += 2;
 	if (keycode == 125)
-		param->tall -= 5;
+		param->tall -= 2;
 	mlx_clear_window(param->mlx_ptr, param->mlx_wind);
 	ft_mappaint(param);
 	return (0);
