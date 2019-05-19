@@ -17,7 +17,7 @@
 # define HEIGHT 1395
 # define WIDTH 2560
 # define LINE 20
-# define COLOR 128 //167772
+# define COLOR 50 //167772
 # define CON 5
 # define FDF "fdf"
 
@@ -34,6 +34,7 @@ typedef struct		s_mlx
 	int				y;
 	int				z;
 	int				color;
+	int				col_bool;
 }					t_mlx;
 
 typedef struct		s_fdf
@@ -49,6 +50,7 @@ typedef struct		s_fdf
 	int				beg;
 	int				tall;
 	int				l;
+	int				col_ch;
 }					t_fdf;
 
 void			ft_free(void ***array);

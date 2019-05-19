@@ -20,12 +20,14 @@ static void		iso(t_mlx *clone, int x, int y, t_fdf *mlx)
 	prev_x = x * mlx->l;
     prev_y = y * mlx->l;
     clone->x = (prev_x - prev_y) * cos(30 / 57.2958) + mlx->x_add;
-	clone->y = (prev_y + prev_x) * sin(30 / 57.2958) + mlx->y_add - clone->z;
+	clone->y = (prev_y + prev_x - clone->z) * sin(30 / 57.2958) + mlx->y_add;
 }
 
 static void		cloner(t_mlx *clone, t_fdf *mlx, int y, int x)
 {
 	clone->color = mlx->dot[y][x]->color;
+	if (!mlx->dot[y][x]->col_bool)
+		clone->color += mlx->col_ch;
 	clone->z = mlx->dot[y][x]->z;
 	clone->z *= mlx->tall;
 	if (mlx->iso == 0)

@@ -40,6 +40,7 @@ static void		ft_width(t_mlx *dot, char *s)
 		}
 		s[l] = '\0';
 		dot->color = ft_atoi_base(str, 16);
+		dot->col_bool = 1;
 	}
 	else
 		dot->color = COLOR;

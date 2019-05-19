@@ -51,6 +51,10 @@ int				key_press(int keycode, t_fdf *param)
 		param->tall += 2;
 	if (keycode == 125)
 		param->tall -= 2;
+	if (keycode == 116)
+		param->col_ch += 100;
+	if (keycode == 121)
+		param->col_ch -= 100;
 	mlx_clear_window(param->mlx_ptr, param->mlx_wind);
 	ft_mappaint(param);
 	return (0);

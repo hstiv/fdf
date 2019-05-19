@@ -11,6 +11,7 @@ t_mlx		*ft_new_dot()
 		dot->x = 0;
 		dot->y = 0;
 		dot->z = 0;
+		dot->col_bool = 0;
 	}
 	return (dot);
 }
@@ -32,6 +33,7 @@ t_fdf		*ft_new_fdf()
 		data->par = 1;
 		data->tall = 1;
 		data->l = 10;
+		data->col_ch = 100;
 	}
 	return (data);
 }
