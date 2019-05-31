@@ -1,10 +1,12 @@
 NAME = libfdf.a
 
 SRC = ft_valid_map.c ft_rec.c ft_new_lst.c ft_run_window.c ft_drawstr.c \
-		ft_free.c bresenham.c key_hooks.c mouse_press.c
+		ft_free.c bresenham.c key_hooks.c mouse_press.c mouse_move.c \
+		mouse_release.c
 
 OBJECT = ft_valid_map.o ft_rec.o ft_new_lst.o ft_run_window.o ft_drawstr.o \
-		ft_free.o bresenham.o key_hooks.o mouse_press.o
+		ft_free.o bresenham.o key_hooks.o mouse_press.o mouse_move.o \
+		mouse_release.o
 
 INCLUDES =  libft/
 
