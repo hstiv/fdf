@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   mouse_press.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mwuckert <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hstiv <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/11 18:19:31 by mwuckert          #+#    #+#             */
-/*   Updated: 2019/04/11 18:19:34 by mwuckert         ###   ########.fr       */
+/*   Created: 2019/05/31 13:51:05 by hstiv             #+#    #+#             */
+/*   Updated: 2019/05/31 13:52:32 by hstiv            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
-#include "libft.h"
+#include "libfdf.h"
 
-int main(int argc, char *argv[])
+int				mouse_press(int button, int x, int y, t_fdf *param)
 {
-    int fd;
-
-    if (argc == 2)
-    {
-		fd = open(*(argv + 1), O_RDONLY);
-		if (!(fdf(fd)))
-			ft_putstr("Error\n");
+	if (button == 1)
+	{
+		param->x_add = x;
+		param->y_add = y;
 	}
-	else
-		ft_putstr("usage: fdf source_file\n");
 	return (0);
-} 
+}

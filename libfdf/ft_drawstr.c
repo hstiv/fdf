@@ -6,7 +6,7 @@
 /*   By: hstiv <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 17:37:01 by hstiv             #+#    #+#             */
-/*   Updated: 2019/05/06 17:37:04 by hstiv            ###   ########.fr       */
+/*   Updated: 2019/05/31 13:54:29 by hstiv            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 static void		iso(t_mlx *clone, int x, int y, t_fdf *mlx)
 {
 	int			prev_x;
-    int 		prev_y;
+	int			prev_y;
 
 	prev_x = x * mlx->l;
-    prev_y = y * mlx->l;
-    clone->x = (prev_x - prev_y) * cos(30 / 57.2958) + mlx->x_add;
+	prev_y = y * mlx->l;
+	clone->x = (prev_x - prev_y) * cos(30 / 57.2958) + mlx->x_add;
 	clone->y = (prev_y + prev_x - clone->z) * sin(30 / 57.2958) + mlx->y_add;
 }
 
@@ -36,7 +36,7 @@ static void		cloner(t_mlx *clone, t_fdf *mlx, int y, int x)
 		clone->y = y * mlx->l + (mlx->y_add - clone->z);
 	}
 	if (mlx->iso == 1)
-		iso (clone, x, y, mlx);
+		iso(clone, x, y, mlx);
 }
 
 static void		ft_print_hor(t_mlx **dot, t_fdf *mlx, int y)

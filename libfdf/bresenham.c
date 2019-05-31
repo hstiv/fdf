@@ -6,7 +6,7 @@
 /*   By: hstiv <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 17:36:45 by hstiv             #+#    #+#             */
-/*   Updated: 2019/05/06 17:36:48 by hstiv            ###   ########.fr       */
+/*   Updated: 2019/05/31 14:31:58 by hstiv            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ void			ft_bresenham(t_mlx *d0, t_mlx *d1, t_fdf *mlx)
 		{
 			err -= dely;
 			d0->x += dirx;
-        }
-        if (derr < delx)
-        {
-            err += delx;
+		}
+		if (derr < delx)
+		{
+			err += delx;
 			d0->y += diry;
 		}
 	}

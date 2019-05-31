@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_new_lst.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hstiv <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/05/31 14:29:32 by hstiv             #+#    #+#             */
+/*   Updated: 2019/05/31 14:29:44 by hstiv            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libfdf.h"
 
-t_mlx		*ft_new_dot()
+t_mlx		*ft_new_dot(void)
 {
 	t_mlx	*dot;
 
@@ -16,7 +28,7 @@ t_mlx		*ft_new_dot()
 	return (dot);
 }
 
-t_fdf		*ft_new_fdf()
+t_fdf		*ft_new_fdf(void)
 {
 	t_fdf	*data;
 
@@ -33,7 +45,7 @@ t_fdf		*ft_new_fdf()
 		data->par = 1;
 		data->tall = 1;
 		data->l = 10;
-		data->col_ch = 100;
+		data->col_ch = 423616265;
 	}
 	return (data);
 }

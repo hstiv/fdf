@@ -1,6 +1,5 @@
 {
     "files.associations": {
-        "libfdf.h": "c",
-        "stdio.h": "c"
+        "libfdf.h": "c"
     }
 }

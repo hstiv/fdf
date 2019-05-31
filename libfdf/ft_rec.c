@@ -6,11 +6,34 @@
 /*   By: hstiv <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 19:54:09 by hstiv             #+#    #+#             */
-/*   Updated: 2019/04/13 19:36:34 by mwuckert         ###   ########.fr       */
+/*   Updated: 2019/05/31 14:18:31 by hstiv            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libfdf.h"
+
+static void		if_color(int *i, int *l, t_mlx *dot, char *s)
+{
+	char		str;
+
+	str = ft_strnew(11);
+	if (s[i] == ',')
+	{
+		i += 3;
+		l = 0;
+		while (s[i] <= 70 && s[i] != '\0')
+		{
+			str[l] = s[i];
+			l++;
+			i++;
+		}
+		s[l] = '\0';
+		dot->color = ft_atoi_base(str, 16);
+		dot->col_bool = 1;
+	}
+	else
+		dot->color = COLOR;
+}
 
 static void		ft_width(t_mlx *dot, char *s)
 {
@@ -28,22 +51,6 @@ static void		ft_width(t_mlx *dot, char *s)
 		i++;
 	}
 	dot->z = ft_atoi(str);
-	if (s[i] == ',')
-	{
-		i += 3;
-		l = 0;
-		while (s[i] <= 70 && s[i] != '\0')
-		{
-			str[l] = s[i];
-			l++;
-			i++;
-		}
-		s[l] = '\0';
-		dot->color = ft_atoi_base(str, 16);
-		dot->col_bool = 1;
-	}
-	else
-		dot->color = COLOR;
 	free(str);
 }
 

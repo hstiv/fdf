@@ -47,12 +47,15 @@ typedef struct		s_fdf
 	int				y_add;
 	int				iso;
 	int				par;
-	int				beg;
+
 	int				tall;
 	int				l;
 	int				col_ch;
 }					t_fdf;
 
+int				mouse_press(int button, int x, int y, t_fdf *param);
+int				ft_close(void *param);
+int				key_press(int keycode, t_fdf *param);
 void			ft_free(void ***array);
 void			ft_mappaint(t_fdf *mlx_data);
 void			ft_bresenham(t_mlx *d0, t_mlx *d1, t_fdf *mlx);
