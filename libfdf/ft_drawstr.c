@@ -30,7 +30,7 @@ static void		cloner(t_mlx *clone, t_fdf *mlx, int y, int x)
 		clone->color += mlx->col_ch;
 	clone->z = mlx->dot[y][x]->z;
 	clone->z *= mlx->tall;
-	if (mlx->iso == 0 && mlx->rot == 0)
+	if (!mlx->iso && !mlx->rot)
 	{
 		clone->x = x * mlx->l + mlx->x_add;
 		clone->y = y * mlx->l + (mlx->y_add - clone->z);

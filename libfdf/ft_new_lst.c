@@ -30,11 +30,11 @@ t_mlx		*ft_new_dot(void)
 
 static void	data_con(t_fdf *fdf)
 {
-	fdf->move = "Figure Move";
-	fdf->scale = "Scale";
-	fdf->height = "Height";
+	fdf->move = "         Figure Move";
+	fdf->scale = "               Scale";
+	fdf->height = "              Height";
 	fdf->isometric = "Isometric Projection";
-	fdf->parallel = "Parallel Projection";
+	fdf->parallel = " Parallel Projection";
 	fdf->red = 15675716;
 	fdf->green = 1042476;
 	fdf->sl = 0;
