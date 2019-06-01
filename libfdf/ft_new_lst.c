@@ -42,6 +42,15 @@ static void	data_con(t_fdf *fdf)
 	fdf->hi = 0;
 }
 
+static void	data_rot(t_fdf *fdf)
+{
+	fdf->rot = 0;
+	fdf->x = 0;
+	fdf->y = 0;
+	fdf->c = 0;
+	fdf->v = 0;
+}
+
 t_fdf		*ft_new_fdf(void)
 {
 	t_fdf	*data;
@@ -66,6 +75,7 @@ t_fdf		*ft_new_fdf(void)
 		data->err = 0;
 		data->derr = 0;
 		data_con(data);
+		data_rot(data);
 	}
 	return (data);
 }

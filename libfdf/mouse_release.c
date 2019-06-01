@@ -12,6 +12,14 @@
 
 #include "libfdf.h"
 
+static void			oops(int x, int y, t_fdf *fdf)
+{
+	fdf->x = 0;
+	fdf->y = 0;
+	x = 0;
+	y = 0;
+}
+
 int					mouse_release(int button, int x, int y, t_fdf *param)
 {
 	if (button == 1)
@@ -28,8 +36,8 @@ int					mouse_release(int button, int x, int y, t_fdf *param)
 		if (param->sl)
 			param->sl = 0;
 	}
-	x = 0;
-	y = 0;
+	if (!param->rot)
+		oops(x, y, param);
 	mlx_clear_window(param->mlx_ptr, param->mlx_wind);
 	ft_mappaint(param);
 	put_man(param);

@@ -30,13 +30,15 @@ static void		cloner(t_mlx *clone, t_fdf *mlx, int y, int x)
 		clone->color += mlx->col_ch;
 	clone->z = mlx->dot[y][x]->z;
 	clone->z *= mlx->tall;
-	if (mlx->iso == 0)
+	if (mlx->iso == 0 && mlx->rot == 0)
 	{
 		clone->x = x * mlx->l + mlx->x_add;
 		clone->y = y * mlx->l + (mlx->y_add - clone->z);
 	}
-	if (mlx->iso == 1)
+	if (mlx->iso == 1 && !mlx->rot)
 		iso(clone, x, y, mlx);
+	if (mlx->rot == 1)
+		rotate(clone, mlx);
 }
 
 static void		ft_print_hor(t_mlx **dot, t_fdf *mlx, int y)

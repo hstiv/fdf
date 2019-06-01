@@ -29,6 +29,10 @@ static void		x_and_y(int keycode, t_fdf *param)
 		param->mv = 1;
 	if (keycode == 6)
 		param->z = 1;
+	if (keycode == 8)
+		param->c = 1;
+	if (keycode == 9)
+		param->v = 1;
 }
 
 static void		movement_col(int keycode, t_fdf *param)
@@ -57,11 +61,19 @@ static void		iso_par(int keycode, t_fdf *param)
 	{
 		param->iso = 1;
 		param->par = 0;
+		param->rot = 0;
 	}
 	if (keycode == 35)
 	{
 		param->iso = 0;
 		param->par = 1;
+		param->rot = 0;
+	}
+	if (keycode == 15)
+	{
+		param->iso = 0;
+		param->par = 0;
+		param->rot = 1;
 	}
 }
 
@@ -76,6 +88,10 @@ int				key_release(int keycode, t_fdf *param)
 		param->sl = 0;
 	if (keycode == 126 || keycode == 125)
 		param->hi = 0;
+	if (keycode == 8)
+		param->c = 0;
+	if (keycode == 9)
+		param->v = 0;
 	put_man(param);
 	return (0);
 }

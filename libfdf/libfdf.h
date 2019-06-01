@@ -65,8 +65,16 @@ typedef struct		s_fdf
 	int				sl;
 	int				mv;
 	int				hi;
+	int				rot;
+	int				c;
+	int				v;
+	int				x;
+	int				y;
 }					t_fdf;
 
+void				rotate(t_mlx *dot, t_fdf *f);
+void				x_rotate(t_mlx *dot, t_fdf *f);
+void				y_rotate(t_mlx *dot, t_fdf *f);
 void				put_man(t_fdf *fdf);
 int					mouse_move(int x, int y, t_fdf *param);
 int					key_release(int keycode, t_fdf *fdf);
