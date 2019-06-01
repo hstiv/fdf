@@ -28,8 +28,9 @@ void			ft_run_window(t_fdf *mlx_data)
 	ft_mappaint(mlx_data);
 	mlx_hook(mlx_data->mlx_wind, 17, (1L << 17), ft_close, mlx_data);
 	mlx_hook(mlx_data->mlx_wind, 2, 0, key_press, mlx_data);
+	mlx_hook(mlx_data->mlx_wind, 3, 0, key_release, mlx_data);
 	mlx_hook(mlx_data->mlx_wind, 4, 0, mouse_press, mlx_data);
-//	mlx_hook(mlx_data->mlx_wind, 5, 0, mouse_release, mlx_data);
-//	mlx_hook(mlx_data->mlx_wind, 6, 0, mouse_move, mlx_data);
+	mlx_hook(mlx_data->mlx_wind, 6, 0, mouse_move, mlx_data);
+	mlx_hook(mlx_data->mlx_wind, 5, 0, mouse_release, mlx_data);
 	mlx_loop(mlx_data->mlx_ptr);
 }

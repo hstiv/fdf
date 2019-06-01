@@ -16,6 +16,6 @@
 # include "unistd.h"
 # include "fcntl.h"
 
-int     fdf(const int fd);
+int			fdf(const int fd);
 
 #endif

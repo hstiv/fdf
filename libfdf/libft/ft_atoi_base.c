@@ -14,10 +14,12 @@
 
 static int		is_base(char c)
 {
-	char		s1[17] = "0123456789abcdef";
-	char		s2[17] = "0123456789ABCDEF";
+	char		*s1;
+	char		*s2;
 	int			i;
 
+	s1 = "0123456789abcdef";
+	s2 = "0123456789ABCDEF";
 	i = 0;
 	while (i < 16)
 	{

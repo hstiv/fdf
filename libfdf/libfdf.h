@@ -17,7 +17,7 @@
 # define HEIGHT 1395
 # define WIDTH 2560
 # define LINE 20
-# define COLOR 50 //167772
+# define COLOR 50
 # define CON 5
 # define FDF "fdf"
 
@@ -47,22 +47,29 @@ typedef struct		s_fdf
 	int				y_add;
 	int				iso;
 	int				par;
-
+	int				right_mouse;
+	int				left_mouse;
 	int				tall;
 	int				l;
+	int				z;
+	int				err;
+	int				derr;
 	int				col_ch;
 }					t_fdf;
 
-int				mouse_press(int button, int x, int y, t_fdf *param);
-int				ft_close(void *param);
-int				key_press(int keycode, t_fdf *param);
-void			ft_free(void ***array);
-void			ft_mappaint(t_fdf *mlx_data);
-void			ft_bresenham(t_mlx *d0, t_mlx *d1, t_fdf *mlx);
-char			**ft_valid_map(const int fd);
-void			ft_rec(t_fdf *mlx_data, char **map);
-void			ft_run_window(t_fdf* mlx_data);
-t_mlx			*ft_new_dot();
-t_fdf			*ft_new_fdf();
+int					mouse_move(int x, int y, t_fdf *param);
+int					key_release(int keycode, t_fdf *fdf);
+int					mouse_release(int button, int x, int y, t_fdf *fdf);
+int					mouse_press(int button, int x, int y, t_fdf *param);
+int					ft_close(void *param);
+int					key_press(int keycode, t_fdf *param);
+void				ft_free(void ***array);
+void				ft_mappaint(t_fdf *mlx_data);
+void				ft_bresenham(t_mlx *d0, t_mlx *d1, t_fdf *mlx);
+char				**ft_valid_map(const int fd);
+void				ft_rec(t_fdf *mlx_data, char **map);
+void				ft_run_window(t_fdf *mlx_data);
+t_mlx				*ft_new_dot();
+t_fdf				*ft_new_fdf();
 
 #endif

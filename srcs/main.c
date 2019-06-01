@@ -13,12 +13,12 @@
 #include "fdf.h"
 #include "libft.h"
 
-int main(int argc, char *argv[])
+int				main(int argc, char *argv[])
 {
-    int fd;
+	int			fd;
 
-    if (argc == 2)
-    {
+	if (argc == 2)
+	{
 		fd = open(*(argv + 1), O_RDONLY);
 		if (!(fdf(fd)))
 			ft_putstr("Error\n");
@@ -26,4 +26,4 @@ int main(int argc, char *argv[])
 	else
 		ft_putstr("usage: fdf source_file\n");
 	return (0);
-} 
+}

@@ -30,25 +30,23 @@ void			ft_bresenham(t_mlx *d0, t_mlx *d1, t_fdf *mlx)
 	int			dely;
 	int			diry;
 	int			dirx;
-	int			err;
-	int			derr;
 
 	delta(d0, d1, &delx, &dely);
 	ft_dir(&diry, &dirx, d0, d1);
-	err = delx - dely;
+	mlx->err = delx - dely;
 	mlx_pixel_put(mlx->mlx_ptr, mlx->mlx_wind, d1->x, d1->y, d1->color);
 	while (d0->x != d1->x || d0->y != d1->y)
 	{
 		mlx_pixel_put(mlx->mlx_ptr, mlx->mlx_wind, d0->x, d0->y, d1->color);
-		derr = err * 2;
-		if (derr > -dely)
+		mlx->derr = mlx->err * 2;
+		if (mlx->derr > -dely)
 		{
-			err -= dely;
+			mlx->err -= dely;
 			d0->x += dirx;
 		}
-		if (derr < delx)
+		if (mlx->derr < delx)
 		{
-			err += delx;
+			mlx->err += delx;
 			d0->y += diry;
 		}
 	}

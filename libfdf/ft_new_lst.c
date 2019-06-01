@@ -42,10 +42,15 @@ t_fdf		*ft_new_fdf(void)
 		data->x_add = 70;
 		data->y_add = 70;
 		data->iso = 0;
+		data->z = 0;
 		data->par = 1;
 		data->tall = 1;
 		data->l = 10;
-		data->col_ch = 423616265;
+		data->col_ch = 167772;
+		data->left_mouse = 0;
+		data->right_mouse = 0;
+		data->err = 0;
+		data->derr = 0;
 	}
 	return (data);
 }

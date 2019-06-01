@@ -12,7 +12,14 @@
 
 #include "libfdf.h"
 
-int mouse_move(int x, int y, t_fdf *param)
+int					mouse_move(int x, int y, t_fdf *param)
 {
-
+	if (param->left_mouse == 1 && param->z == 1)
+	{
+		param->x_add = x;
+		param->y_add = y;
+	}
+	mlx_clear_window(param->mlx_ptr, param->mlx_wind);
+	ft_mappaint(param);
+	return (0);
 }

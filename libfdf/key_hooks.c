@@ -24,6 +24,8 @@ static void		x_and_y(int keycode, t_fdf *param)
 		param->x_add += CON;
 	if (keycode == 0)
 		param->x_add -= CON;
+	if (keycode == 6)
+		param->z = 1;
 }
 
 static void		movement_col(int keycode, t_fdf *param)
@@ -54,6 +56,13 @@ static void		iso_par(int keycode, t_fdf *param)
 		param->iso = 0;
 		param->par = 1;
 	}
+}
+
+int				key_release(int keycode, t_fdf *param)
+{
+	if (keycode == 6)
+		param->z = 0;
+	return (0);
 }
 
 int				key_press(int keycode, t_fdf *param)
