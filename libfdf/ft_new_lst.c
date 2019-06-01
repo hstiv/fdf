@@ -28,6 +28,20 @@ t_mlx		*ft_new_dot(void)
 	return (dot);
 }
 
+static void	data_con(t_fdf *fdf)
+{
+	fdf->move = "Figure Move";
+	fdf->scale = "Scale";
+	fdf->height = "Height";
+	fdf->isometric = "Isometric Projection";
+	fdf->parallel = "Parallel Projection";
+	fdf->red = 15675716;
+	fdf->green = 1042476;
+	fdf->sl = 0;
+	fdf->mv = 0;
+	fdf->hi = 0;
+}
+
 t_fdf		*ft_new_fdf(void)
 {
 	t_fdf	*data;
@@ -51,6 +65,7 @@ t_fdf		*ft_new_fdf(void)
 		data->right_mouse = 0;
 		data->err = 0;
 		data->derr = 0;
+		data_con(data);
 	}
 	return (data);
 }

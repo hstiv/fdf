@@ -24,6 +24,9 @@ static void		x_and_y(int keycode, t_fdf *param)
 		param->x_add += CON;
 	if (keycode == 0)
 		param->x_add -= CON;
+	if (keycode == 13 || keycode == 1
+		|| keycode == 2 || keycode == 0)
+		param->mv = 1;
 	if (keycode == 6)
 		param->z = 1;
 }
@@ -38,6 +41,10 @@ static void		movement_col(int keycode, t_fdf *param)
 		param->tall += 2;
 	if (keycode == 125)
 		param->tall -= 2;
+	if (keycode == 123 || keycode == 124)
+		param->sl = 1;
+	if (keycode == 126 || keycode == 125)
+		param->hi = 1;
 	if (keycode == 116)
 		param->col_ch += 100;
 	if (keycode == 121)
@@ -62,6 +69,14 @@ int				key_release(int keycode, t_fdf *param)
 {
 	if (keycode == 6)
 		param->z = 0;
+	if (keycode == 13 || keycode == 1
+		|| keycode == 2 || keycode == 0)
+		param->mv = 0;
+	if (keycode == 123 || keycode == 124)
+		param->sl = 0;
+	if (keycode == 126 || keycode == 125)
+		param->hi = 0;
+	put_man(param);
 	return (0);
 }
 
@@ -72,5 +87,6 @@ int				key_press(int keycode, t_fdf *param)
 	movement_col(keycode, param);
 	mlx_clear_window(param->mlx_ptr, param->mlx_wind);
 	ft_mappaint(param);
+	put_man(param);
 	return (0);
 }

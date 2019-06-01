@@ -14,12 +14,14 @@
 
 int					mouse_move(int x, int y, t_fdf *param)
 {
-	if (param->left_mouse == 1 && param->z == 1)
+	if (param->left_mouse && param->right_mouse)
 	{
 		param->x_add = x;
 		param->y_add = y;
+		param->mv = 1;
 	}
 	mlx_clear_window(param->mlx_ptr, param->mlx_wind);
 	ft_mappaint(param);
+	put_man(param);
 	return (0);
 }

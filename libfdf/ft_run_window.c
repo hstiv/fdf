@@ -12,6 +12,20 @@
 
 #include "libfdf.h"
 
+void			put_man(t_fdf *fdf)
+{
+	mlx_string_put(fdf->mlx_ptr, fdf->mlx_wind, 5,
+	15, (fdf->iso) ? fdf->green : fdf->red, fdf->isometric);
+	mlx_string_put(fdf->mlx_ptr, fdf->mlx_wind, 5,
+	35, (fdf->par) ? fdf->green : fdf->red, fdf->parallel);
+	mlx_string_put(fdf->mlx_ptr, fdf->mlx_wind, 5,
+	55, (fdf->mv) ? fdf->green : fdf->red, fdf->move);
+	mlx_string_put(fdf->mlx_ptr, fdf->mlx_wind, 5,
+	75, (fdf->hi) ? fdf->green : fdf->red, fdf->height);
+	mlx_string_put(fdf->mlx_ptr, fdf->mlx_wind, 5,
+	95, (fdf->sl) ? fdf->green : fdf->red, fdf->scale);
+}
+
 int				ft_close(void *param)
 {
 	t_fdf		*tmp;
@@ -32,5 +46,6 @@ void			ft_run_window(t_fdf *mlx_data)
 	mlx_hook(mlx_data->mlx_wind, 4, 0, mouse_press, mlx_data);
 	mlx_hook(mlx_data->mlx_wind, 6, 0, mouse_move, mlx_data);
 	mlx_hook(mlx_data->mlx_wind, 5, 0, mouse_release, mlx_data);
+	put_man(mlx_data);
 	mlx_loop(mlx_data->mlx_ptr);
 }

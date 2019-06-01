@@ -55,8 +55,19 @@ typedef struct		s_fdf
 	int				err;
 	int				derr;
 	int				col_ch;
+	char			*move;
+	char			*scale;
+	char			*height;
+	char			*isometric;
+	char			*parallel;
+	int				green;
+	int				red;
+	int				sl;
+	int				mv;
+	int				hi;
 }					t_fdf;
 
+void				put_man(t_fdf *fdf);
 int					mouse_move(int x, int y, t_fdf *param);
 int					key_release(int keycode, t_fdf *fdf);
 int					mouse_release(int button, int x, int y, t_fdf *fdf);
