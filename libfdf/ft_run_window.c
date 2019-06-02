@@ -19,11 +19,13 @@ void			put_man(t_fdf *fdf)
 	mlx_string_put(fdf->mlx_ptr, fdf->mlx_wind, 5,
 	35, (fdf->par) ? fdf->green : fdf->red, fdf->parallel);
 	mlx_string_put(fdf->mlx_ptr, fdf->mlx_wind, 5,
-	55, (fdf->mv) ? fdf->green : fdf->red, fdf->move);
+	55, (fdf->rot) ? fdf->green : fdf->red, "      Rotation in 3D");
 	mlx_string_put(fdf->mlx_ptr, fdf->mlx_wind, 5,
-	75, (fdf->hi) ? fdf->green : fdf->red, fdf->height);
+	75, (fdf->mv) ? fdf->green : fdf->red, fdf->move);
 	mlx_string_put(fdf->mlx_ptr, fdf->mlx_wind, 5,
-	95, (fdf->sl) ? fdf->green : fdf->red, fdf->scale);
+	95, (fdf->hi) ? fdf->green : fdf->red, fdf->height);
+	mlx_string_put(fdf->mlx_ptr, fdf->mlx_wind, 5,
+	115, (fdf->sl) ? fdf->green : fdf->red, fdf->scale);
 }
 
 int				ft_close(void *param)

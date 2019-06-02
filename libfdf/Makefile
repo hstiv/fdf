@@ -21,13 +21,14 @@ $(NAME):
 	@make -C $(INCLUDES) fclean && make -C $(INCLUDES)
 	@gcc $(FLAGS) -c $(SRC) -I $(INCLUDES) -I $(LMLX)
 	@ar -r -c -s $(NAME) $(OBJECT)
+	@mkdir obj && mv $(OBJECT) obj/
 
 norm:
 	norminette ft_*.c
 	norminette *.h
 
 clean:
-	@rm -f *.o
+	@rm -rf obj
 	@make -C $(INCLUDES) fclean
 
 fclean: clean

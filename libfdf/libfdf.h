@@ -51,7 +51,6 @@ typedef struct		s_fdf
 	int				left_mouse;
 	int				tall;
 	int				l;
-	int				z;
 	int				err;
 	int				derr;
 	int				col_ch;
@@ -70,9 +69,12 @@ typedef struct		s_fdf
 	int				v;
 	int				x;
 	int				y;
+	int				z;
+	int				space;
 }					t_fdf;
 
 void				rotate(t_mlx *dot, t_fdf *f, int x, int y);
+void				z_rotate(t_mlx *dot, t_fdf *f);
 void				x_rotate(t_mlx *dot, t_fdf *f);
 void				y_rotate(t_mlx *dot, t_fdf *f);
 void				put_man(t_fdf *fdf);

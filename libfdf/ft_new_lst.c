@@ -47,6 +47,8 @@ static void	data_rot(t_fdf *fdf)
 	fdf->rot = 0;
 	fdf->x = 0;
 	fdf->y = 0;
+	fdf->space = 0;
+	fdf->z = 0;
 	fdf->c = 0;
 	fdf->v = 0;
 }

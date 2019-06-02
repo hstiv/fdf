@@ -16,6 +16,7 @@ static void			oops(int x, int y, t_fdf *fdf)
 {
 	fdf->x = 0;
 	fdf->y = 0;
+	fdf->z = 0;
 	x = 0;
 	y = 0;
 }

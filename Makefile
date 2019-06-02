@@ -27,10 +27,11 @@ $(NAME):
 	@make -C $(LFDF) fclean && make -C $(LFDF)
 	@gcc $(FLAGS) -c $(SRCS) -I $(LFDF) -I $(LFT) -I $(FDF_H)
 	@gcc -o $(NAME) $(SRCO) -L $(LFDF) -lfdf -L $(LFT) -lft $(SRC_LMLX)
+	@mkdir obj && mv $(SRCO) obj/
 	@echo "(•̀ᴗ•́)و $(NAME) generated!".
 	 
 clean:
-	@rm -f *.o
+	@rm -rf obj
 	@make -C $(LFDF) fclean
 
 fclean: clean

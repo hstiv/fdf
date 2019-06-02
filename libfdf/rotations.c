@@ -38,10 +38,24 @@ void				y_rotate(t_mlx *dot, t_fdf *f)
 	dot->z = -(x * sin(f->y / 57.2958)) + (z * cos(f->y / 57.2958));
 }
 
+void				z_rotate(t_mlx *dot, t_fdf *f)
+{
+	int				y;
+	int				x;
+	int				z;
+
+	y = dot->y;
+	x = dot->x;
+	z = dot->z;
+	x = (x * cos(f->z / 57.2958)) - (y * sin(f->z / 57.2958)) + f->x_add;
+	y = -(x * sin(f->z / 57.2958)) + (y * cos(f->z / 57.2958)) + f->y_add;
+}
+
 void				rotate(t_mlx *dot, t_fdf *f, int x, int y)
 {
 	dot->x = x * f->l;
 	dot->y = y * f->l;
 	y_rotate(dot, f);
 	x_rotate(dot, f);
+	z_rotate(dot, f);
 }
