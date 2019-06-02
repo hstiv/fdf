@@ -19,8 +19,8 @@ int			fdf(const int fd)
 
 	if (!(map = ft_valid_map(fd)))
 		return (0);
-	mlx_data = ft_new_fdf();
-	ft_rec(mlx_data, map);
+	if (!(mlx_data = ft_new_fdf()) || !ft_rec(mlx_data, map))
+		return (0);
 	ft_run_window(mlx_data);
 	if (mlx_data->dot)
 		ft_free((void ***)mlx_data->dot);

@@ -12,11 +12,12 @@
 
 #include "libfdf.h"
 
-static void		if_color(int *i, int *l, t_mlx *dot, char *s)
+static int		if_color(int *i, int *l, t_mlx *dot, char *s)
 {
 	char		*str;
 
-	str = ft_strnew(11);
+	if (!(str = ft_strnew(11)))
+		return (0);
 	if (s[*i] == ',')
 	{
 		(*i) += 3;
@@ -34,9 +35,10 @@ static void		if_color(int *i, int *l, t_mlx *dot, char *s)
 	else
 		dot->color = COLOR;
 	free(str);
+	return (1);
 }
 
-static void		ft_width(t_mlx *dot, char *s)
+static int		ft_width(t_mlx *dot, char *s)
 {
 	char		*str;
 	int			i;
@@ -44,7 +46,8 @@ static void		ft_width(t_mlx *dot, char *s)
 
 	i = 0;
 	l = 0;
-	str = ft_strnew(11);
+	if (!(str = ft_strnew(11)))
+		return (0);
 	while (s[i] != ',' && s[i] != '\0')
 	{
 		str[l] = s[i];
@@ -52,11 +55,13 @@ static void		ft_width(t_mlx *dot, char *s)
 		i++;
 	}
 	dot->z = ft_atoi(str);
-	if_color(&i, &l, dot, s);
+	if (!if_color(&i, &l, dot, s))
+		return (0);
 	free(str);
+	return (1);
 }
 
-static void		ft_recorder(char **s, t_mlx **dot, int y)
+static int		ft_recorder(char **s, t_mlx **dot, int y)
 {
 	int			x;
 
@@ -64,14 +69,17 @@ static void		ft_recorder(char **s, t_mlx **dot, int y)
 	y = 0;
 	while (s[x] != NULL)
 	{
-		dot[x] = ft_new_dot();
-		ft_width(dot[x], s[x]);
+		if (!(dot[x] = ft_new_dot()))
+			return (0);
+		if (!ft_width(dot[x], s[x]))
+			return (0);
 		x++;
 	}
 	ft_arraydel((void **)s);
+	return (1);
 }
 
-void			ft_rec(t_fdf *mlx_data, char **map)
+int				ft_rec(t_fdf *mlx_data, char **map)
 {
 	int			y;
 	int			p;
@@ -88,10 +96,13 @@ void			ft_rec(t_fdf *mlx_data, char **map)
 	y = 0;
 	while (map[y] != NULL)
 	{
-		if (!dot[y])
-			dot[y] = (t_mlx **)ft_memalloc(sizeof(t_mlx *) * (p + 1));
-		ft_recorder(ft_strsplit(map[y], 32), dot[y], y);
+		if (!dot || !dot[y])
+			if (!dot || !(dot[y] = (t_mlx **)ft_memalloc(sizeof(t_mlx *) * (p + 1))))
+				return (0);
+		if (!(ft_recorder(ft_strsplit(map[y], 32), dot[y], y)))
+			return (0);
 		y++;
 	}
 	ft_arraydel((void **)map);
+	return (1);
 }

@@ -88,7 +88,7 @@ void				ft_free(void ***array);
 void				ft_mappaint(t_fdf *mlx_data);
 void				ft_bresenham(t_mlx *d0, t_mlx *d1, t_fdf *mlx);
 char				**ft_valid_map(const int fd);
-void				ft_rec(t_fdf *mlx_data, char **map);
+int					ft_rec(t_fdf *mlx_data, char **map);
 void				ft_run_window(t_fdf *mlx_data);
 t_mlx				*ft_new_dot();
 t_fdf				*ft_new_fdf();
