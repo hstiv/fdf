@@ -19,13 +19,13 @@ static void		if_color(int *i, int *l, t_mlx *dot, char *s)
 	str = ft_strnew(11);
 	if (s[*i] == ',')
 	{
-		*i += 3;
-		l = 0;
+		(*i) += 3;
+		*l = 0;
 		while (s[*i] <= 70 && s[*i] != '\0')
 		{
 			str[*l] = s[*i];
-			l++;
-			i++;
+			(*l)++;
+			(*i)++;
 		}
 		s[*l] = '\0';
 		dot->color = ft_atoi_base(str, 16);
@@ -33,6 +33,7 @@ static void		if_color(int *i, int *l, t_mlx *dot, char *s)
 	}
 	else
 		dot->color = COLOR;
+	free(str);
 }
 
 static void		ft_width(t_mlx *dot, char *s)
