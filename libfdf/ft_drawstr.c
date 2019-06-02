@@ -38,7 +38,7 @@ static void		cloner(t_mlx *clone, t_fdf *mlx, int y, int x)
 	if (mlx->iso == 1 && !mlx->rot)
 		iso(clone, x, y, mlx);
 	if (mlx->rot == 1)
-		rotate(clone, mlx);
+		rotate(clone, mlx, x, y);
 }
 
 static void		ft_print_hor(t_mlx **dot, t_fdf *mlx, int y)

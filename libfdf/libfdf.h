@@ -72,7 +72,7 @@ typedef struct		s_fdf
 	int				y;
 }					t_fdf;
 
-void				rotate(t_mlx *dot, t_fdf *f);
+void				rotate(t_mlx *dot, t_fdf *f, int x, int y);
 void				x_rotate(t_mlx *dot, t_fdf *f);
 void				y_rotate(t_mlx *dot, t_fdf *f);
 void				put_man(t_fdf *fdf);
