@@ -12,7 +12,7 @@ LFT = libfdf/libft/
 
 LFDF = libfdf/
 
-LMLX = $(LFDF)libmlx/
+LMLX = $(LFDF).libmlx/
 
 SRC_LMLX = $(FRAME) -L $(LMLX) -lmlx
 

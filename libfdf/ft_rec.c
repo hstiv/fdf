@@ -97,7 +97,8 @@ int				ft_rec(t_fdf *mlx_data, char **map)
 	while (map[y] != NULL)
 	{
 		if (!dot || !dot[y])
-			if (!dot || !(dot[y] = (t_mlx **)ft_memalloc(sizeof(t_mlx *) * (p + 1))))
+			if (!dot ||
+			!(dot[y] = (t_mlx **)ft_memalloc(sizeof(t_mlx *) * (p + 1))))
 				return (0);
 		if (!(ft_recorder(ft_strsplit(map[y], 32), dot[y], y)))
 			return (0);

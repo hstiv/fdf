@@ -12,7 +12,7 @@ INCLUDES =  libft/
 
 FLAGS = -Wall -Wextra -Werror
 
-LMLX = libmlx/
+LMLX = .libmlx/
 
 
 all: $(NAME)
